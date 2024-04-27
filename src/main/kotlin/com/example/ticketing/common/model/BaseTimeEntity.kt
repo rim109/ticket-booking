@@ -1,4 +1,4 @@
-package com.example.ticketing.domain.inform.model
+package com.example.ticketing.common.model
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
