@@ -6,10 +6,7 @@ import jakarta.persistence.*
 @Table(name = "category")
 class Category(
     @Column(name = "name")
-    val name: String,
-
-    @Column(name = "info")
-    val info: String
+    val name: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

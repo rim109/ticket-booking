@@ -1,7 +1,6 @@
 package com.example.ticketing.domain.category.dto
 
 data class CategoryDto(
-    val name: String,
-    val info: String
+    val name: String
 )
 
