@@ -3,12 +3,12 @@ package com.example.ticketing.category.model
 import jakarta.persistence.*
 
 @Entity
-@Table(name= "category")
+@Table(name = "category")
 class Category(
-    @Column
+    @Column(name = "name")
     val name: String,
 
-    @Column
+    @Column(name = "info")
     val info: String
 ) {
     @Id

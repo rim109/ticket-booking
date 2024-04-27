@@ -8,31 +8,33 @@ import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@RequestMapping("/categories")
 class CategoryController(
     private val categoryService: CategoryService
 ) {
 
-    @GetMapping("/category")
+    @GetMapping
     fun getAllCategory(): ResponseEntity<CategoryDto> {
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAllCategory())
     }
 
-    @GetMapping("/category/{categoryId}")
+    @GetMapping("/{categoryId}")
     fun getCategory(
         @PathVariable categoryId: Long
     ): ResponseEntity<CategoryDto> {
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.getCategory(categoryId))
     }
 
-    @PostMapping("/category")
+    @PostMapping
     fun createCategory(): ResponseEntity<CategoryDto> {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory())
     }
 
-    @DeleteMapping("/category/{categoryId}")
+    @DeleteMapping("/{categoryId}")
     fun deleteCategory(
         @PathVariable categoryId: Long
     ): ResponseEntity<Unit> {
