@@ -1,4 +1,4 @@
-package com.example.ticketing.inform.dto
+package com.example.ticketing.domain.inform.dto
 
 data class InformDto(
     val title: String,

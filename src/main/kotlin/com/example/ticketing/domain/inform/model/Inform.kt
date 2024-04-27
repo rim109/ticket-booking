@@ -1,4 +1,4 @@
-package com.example.ticketing.inform.model
+package com.example.ticketing.domain.inform.model
 
 import jakarta.persistence.*
 

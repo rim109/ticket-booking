@@ -1,7 +1,7 @@
-package com.example.ticketing.category.controller
+package com.example.ticketing.domain.category.controller
 
-import com.example.ticketing.category.dto.CategoryDto
-import com.example.ticketing.category.service.CategoryService
+import com.example.ticketing.domain.category.dto.CategoryDto
+import com.example.ticketing.domain.category.service.CategoryService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping

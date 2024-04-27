@@ -1,8 +1,8 @@
-package com.example.ticketing.inform.controller
+package com.example.ticketing.domain.inform.controller
 
-import com.example.ticketing.inform.dto.GetInformDto
-import com.example.ticketing.inform.dto.InformDto
-import com.example.ticketing.inform.service.InformService
+import com.example.ticketing.domain.inform.dto.GetInformDto
+import com.example.ticketing.domain.inform.dto.InformDto
+import com.example.ticketing.domain.inform.service.InformService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

@@ -1,7 +1,7 @@
-package com.example.ticketing.inform.service
+package com.example.ticketing.domain.inform.service
 
-import com.example.ticketing.inform.dto.InformDto
-import com.example.ticketing.inform.dto.GetInformDto
+import com.example.ticketing.domain.inform.dto.InformDto
+import com.example.ticketing.domain.inform.dto.GetInformDto
 
 interface InformService {
 

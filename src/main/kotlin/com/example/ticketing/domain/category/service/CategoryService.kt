@@ -1,6 +1,6 @@
-package com.example.ticketing.category.service
+package com.example.ticketing.domain.category.service
 
-import com.example.ticketing.category.dto.CategoryDto
+import com.example.ticketing.domain.category.dto.CategoryDto
 
 interface CategoryService {
 

@@ -1,7 +1,7 @@
-package com.example.ticketing.category.service
+package com.example.ticketing.domain.category.service
 
-import com.example.ticketing.category.dto.CategoryDto
-import com.example.ticketing.category.repository.CategoryRepository
+import com.example.ticketing.domain.category.dto.CategoryDto
+import com.example.ticketing.domain.category.repository.CategoryRepository
 import org.springframework.stereotype.Service
 
 @Service
