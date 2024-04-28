@@ -28,6 +28,7 @@ class TicketServiceImpl(
         return TicketResponse.from(ticket)
     }
 
+    @Transactional
     override fun updateTicket(ticketId: Long, req: TicketRequest): TicketResponse {
         val ticket = ticketRepository.findByIdOrNull(ticketId) ?: TODO()
         ticket.date = req.date
@@ -37,6 +38,7 @@ class TicketServiceImpl(
         return TicketResponse.from(ticket)
     }
 
+    @Transactional
     override fun deleteTicket(ticketId: Long) {
         val ticket = ticketRepository.findByIdOrNull(ticketId) ?: TODO()
         ticketRepository.delete(ticket)

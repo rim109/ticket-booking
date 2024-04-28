@@ -5,6 +5,7 @@ import com.example.ticketing.domain.category.model.Category
 import com.example.ticketing.domain.category.repository.CategoryRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class CategoryServiceImpl(
@@ -28,6 +29,7 @@ class CategoryServiceImpl(
         return CategoryDto.from(category)
     }
 
+    @Transactional
     override fun deleteCategory(categoryId: Long) {
         val category = categoryRepository.findByIdOrNull(categoryId) ?: TODO()
         categoryRepository.delete(category)

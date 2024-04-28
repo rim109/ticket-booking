@@ -6,6 +6,7 @@ import com.example.ticketing.domain.inform.model.Inform
 import com.example.ticketing.domain.inform.repository.InformRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class InformServiceImpl(
@@ -36,6 +37,7 @@ class InformServiceImpl(
         return InformDto.from(inform)
     }
 
+    @Transactional
     override fun updateInform(informId: Long, req: InformDto): InformDto {
         val inform = informRepository.findByIdOrNull(informId) ?: TODO()
 
@@ -50,6 +52,7 @@ class InformServiceImpl(
         return InformDto.from(inform)
     }
 
+    @Transactional
     override fun deleteInform(informId: Long) {
         val inform = informRepository.findByIdOrNull(informId) ?: TODO()
         informRepository.delete(inform)
