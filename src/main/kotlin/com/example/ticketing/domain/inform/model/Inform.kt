@@ -1,33 +1,39 @@
 package com.example.ticketing.domain.inform.model
 
+import com.example.ticketing.common.model.BaseTimeEntity
 import jakarta.persistence.*
+import org.hibernate.annotations.SQLDelete
 
 @Entity
+@SQLDelete(sql = "UPDATE inform SET is_deleted = true WHERE id = ?")
 @Table(name = "inform")
 class Inform(
 
     @Column(name = "title")
-    val title: String,
+    var title: String,
 
     @Column(name = "content")
-    val content: String,
+    var content: String,
 
     @Column(name = "image_Url")
-    val imageUrl: String,
+    var imageUrl: String,
 
     @Column(name = "price")
-    val price: String,
+    var price: String,
 
     @Column(name = "address")
-    val address: String,
+    var address: String,
 
     @Column(name = "period")
-    val period: String,
+    var period: String,
 
     @Column(name = "totalTime")
-    val totalTime: String
+    var totalTime: String,
 
-) {
+    @Column(name = "is_deleted")
+    var isDeleted: Boolean = false
+
+): BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null

@@ -14,7 +14,7 @@ class InformController(
 ) {
 
     @GetMapping
-    fun getAllInform(): ResponseEntity<GetInformDto> {
+    fun getAllInform(): ResponseEntity<List<GetInformDto>> {
         return ResponseEntity.status(HttpStatus.OK).body(informService.getAllInform())
     }
 
@@ -26,15 +26,16 @@ class InformController(
     }
 
     @PostMapping
-    fun createInform(): ResponseEntity<InformDto> {
-        return ResponseEntity.status(HttpStatus.CREATED).body(informService.createInform())
+    fun createInform(@RequestBody req: InformDto): ResponseEntity<InformDto> {
+        return ResponseEntity.status(HttpStatus.CREATED).body(informService.createInform(req))
     }
 
     @PatchMapping("/{informId}")
     fun updateInform(
-        @PathVariable informId: Long
+        @PathVariable informId: Long,
+        @RequestBody req: InformDto
     ): ResponseEntity<InformDto> {
-        return ResponseEntity.status(HttpStatus.CREATED).body(informService.updateInform(informId))
+        return ResponseEntity.status(HttpStatus.CREATED).body(informService.updateInform(informId, req))
     }
 
     @DeleteMapping("/{informId}")
