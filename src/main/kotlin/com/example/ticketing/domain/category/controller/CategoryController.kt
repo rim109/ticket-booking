@@ -18,7 +18,7 @@ class CategoryController(
 ) {
 
     @GetMapping
-    fun getAllCategory(): ResponseEntity<CategoryDto> {
+    fun getAllCategory(): ResponseEntity<List<CategoryDto>> {
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAllCategory())
     }
 
@@ -30,8 +30,8 @@ class CategoryController(
     }
 
     @PostMapping
-    fun createCategory(): ResponseEntity<CategoryDto> {
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory())
+    fun createCategory(req: CategoryDto): ResponseEntity<CategoryDto> {
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(req))
     }
 
     @DeleteMapping("/{categoryId}")
