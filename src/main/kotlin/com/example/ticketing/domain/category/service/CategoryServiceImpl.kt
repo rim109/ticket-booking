@@ -1,26 +1,37 @@
 package com.example.ticketing.domain.category.service
 
 import com.example.ticketing.domain.category.dto.CategoryDto
+import com.example.ticketing.domain.category.model.Category
 import com.example.ticketing.domain.category.repository.CategoryRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class CategoryServiceImpl(
     private val categoryRepository: CategoryRepository
 ): CategoryService {
-    override fun getAllCategory(): CategoryDto {
-        TODO("Not yet implemented")
+    override fun getAllCategory(): List<CategoryDto> {
+        return categoryRepository.findAll().map { CategoryDto.from(it) }
     }
 
     override fun getCategory(categoryId: Long): CategoryDto {
-        TODO("Not yet implemented")
+        val category = categoryRepository.findByIdOrNull(categoryId) ?: TODO()
+        return CategoryDto.from(category)
     }
 
-    override fun createCategory(): CategoryDto {
-        TODO("Not yet implemented")
+    override fun createCategory(req: CategoryDto): CategoryDto {
+        val category = categoryRepository.save(
+            Category(
+                name = req.name
+            )
+        )
+        return CategoryDto.from(category)
     }
 
+    @Transactional
     override fun deleteCategory(categoryId: Long) {
-        TODO("Not yet implemented")
+        val category = categoryRepository.findByIdOrNull(categoryId) ?: TODO()
+        categoryRepository.delete(category)
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ticketing.domain.ticket.controller
 
+import com.example.ticketing.domain.ticket.dto.request.TicketRequest
 import com.example.ticketing.domain.ticket.dto.response.TicketResponse
 import com.example.ticketing.domain.ticket.service.TicketService
 import org.springframework.http.HttpStatus
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -26,15 +28,16 @@ class TicketController(
     }
 
     @PostMapping
-    fun createTicket(): ResponseEntity<TicketResponse>{
-        return ResponseEntity.status(HttpStatus.CREATED).body(ticketService.createTicket())
+    fun createTicket(req: TicketRequest): ResponseEntity<TicketResponse>{
+        return ResponseEntity.status(HttpStatus.CREATED).body(ticketService.createTicket(req))
     }
 
     @PatchMapping("/{ticketId}")
     fun updateTicket(
-        @PathVariable ticketId: Long
+        @PathVariable ticketId: Long,
+        @RequestBody req: TicketRequest
     ): ResponseEntity<TicketResponse> {
-        return ResponseEntity.status(HttpStatus.OK).body(ticketService.updateTicket(ticketId))
+        return ResponseEntity.status(HttpStatus.OK).body(ticketService.updateTicket(ticketId, req))
     }
 
     @DeleteMapping("/{ticketId}")

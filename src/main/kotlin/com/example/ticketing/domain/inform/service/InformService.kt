@@ -9,13 +9,13 @@ interface InformService {
     fun getInform(informId: Long): GetInformDto
 
     // 공지 전체 조회
-    fun getAllInform(): GetInformDto
+    fun getAllInform(): List<GetInformDto>
 
     // 공지 생성
-    fun createInform(): InformDto
+    fun createInform(req: InformDto): InformDto
 
     // 공지 수정
-    fun updateInform(informId: Long): InformDto
+    fun updateInform(informId: Long, req: InformDto): InformDto
 
     // 공지 삭제
     fun deleteInform(informId: Long)
