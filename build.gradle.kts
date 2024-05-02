@@ -27,6 +27,9 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	runtimeOnly("org.postgresql:postgresql")
+
+	implementation ("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+	implementation ("javax.xml.bind:jaxb-api:2.3.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 }
