@@ -1,7 +1,10 @@
 package com.example.ticketing.domain.inform.model
 
 import com.example.ticketing.common.model.BaseTimeEntity
+import com.example.ticketing.domain.category.model.Category
 import jakarta.persistence.*
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
 import org.hibernate.annotations.SQLDelete
 
 @Entity
@@ -30,10 +33,18 @@ class Inform(
     @Column(name = "totalTime")
     var totalTime: String,
 
-    @Column(name = "is_deleted")
-    var isDeleted: Boolean = false
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    var category: Category,
 
-): BaseTimeEntity() {
+    // 추후 유저 부분 추가후 이 Category를 User로 바꿀 예정
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    var user: Category,
+
+
+    ): BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
