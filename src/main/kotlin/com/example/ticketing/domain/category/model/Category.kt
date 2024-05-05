@@ -8,6 +8,7 @@ import org.hibernate.annotations.SQLDelete
 @SQLDelete(sql = "UPDATE category SET is_deleted = true WHERE id = ?")
 @Table(name = "category")
 class Category(
+
     @Column(name = "name")
     val name: String
 
