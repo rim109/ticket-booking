@@ -30,8 +30,7 @@ class InformServiceImpl(
                 price = req.price,
                 address = req.address,
                 period = req.period,
-                totalTime = req.totalTime,
-                isDeleted = false
+                totalTime = req.totalTime
             )
         )
         return InformDto.from(inform)
