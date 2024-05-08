@@ -33,18 +33,18 @@ class Inform(
     @Column(name = "totalTime")
     var totalTime: String,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    var category: Category,
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "category_id")
+//    var category: Category,
+//
+//    // 추후 유저 부분 추가후 이 Category를 User로 바꿀 예정
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    var user: Category,
 
-    // 추후 유저 부분 추가후 이 Category를 User로 바꿀 예정
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    var user: Category,
 
-
-    ): BaseTimeEntity() {
+    ) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null

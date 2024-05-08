@@ -24,15 +24,15 @@ class Ticket(
     @Column(name = "is_deleted")
     var isDeleted: Boolean = false,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "inform_id")
-    var inform: Inform,
-
-    // 추후 유저 부분 추가후 이 Category를 User로 바꿀 예정
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    var user: Category,
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "inform_id")
+//    var inform: Inform,
+//
+//    // 추후 유저 부분 추가후 이 Category를 User로 바꿀 예정
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    var user: Category,
 
     ): BaseTimeEntity() {
     @Id
