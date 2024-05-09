@@ -1,5 +1,6 @@
 package com.example.ticketing.domain.user.model
 
+import com.example.ticketing.common.model.BaseTimeEntity
 import jakarta.persistence.*
 
 @Entity
@@ -23,8 +24,7 @@ class User(
 
     @Column(name = "phoneNumber")
     var phoneNumber: String,
-)
-{
+) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
