@@ -1,5 +1,6 @@
 package com.example.ticketing.domain.user.service
 
+import com.example.ticketing.domain.user.dto.request.UpdateUserRequest
 import com.example.ticketing.domain.user.dto.response.UserResponse
 
 interface UserService {
@@ -8,7 +9,7 @@ interface UserService {
     fun getUser(userId: Long): UserResponse
 
     // 프로필 수정
-    fun updateUser(userId: Long): UserResponse
+    fun updateUser(userId: Long, req: UpdateUserRequest): UserResponse
 
     // 탈퇴하기
     fun deleteUser(userId: Long)
