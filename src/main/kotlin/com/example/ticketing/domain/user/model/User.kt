@@ -2,8 +2,10 @@ package com.example.ticketing.domain.user.model
 
 import com.example.ticketing.common.model.BaseTimeEntity
 import jakarta.persistence.*
+import org.hibernate.annotations.SQLDelete
 
 @Entity
+@SQLDelete(sql = "UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 @Table(name = "users")
 class User(
 
