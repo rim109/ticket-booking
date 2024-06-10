@@ -1,14 +1,11 @@
 package com.example.ticketing.domain.inform.model
 
 import com.example.ticketing.common.model.BaseTimeEntity
-import com.example.ticketing.domain.category.model.Category
 import jakarta.persistence.*
-import org.hibernate.annotations.OnDelete
-import org.hibernate.annotations.OnDeleteAction
 import org.hibernate.annotations.SQLDelete
 
 @Entity
-@SQLDelete(sql = "UPDATE inform SET is_deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 @Table(name = "inform")
 class Inform(
 
@@ -44,7 +41,7 @@ class Inform(
 //    var user: Category,
 
 
-    ) : BaseTimeEntity() {
+) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
