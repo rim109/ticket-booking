@@ -13,6 +13,7 @@ class UserServiceImpl(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) : UserService {
+
     override fun getUser(userId: Long): UserResponse {
         val user = userRepository.findByIdOrNull(userId) ?: TODO()
         return UserResponse.from(user)

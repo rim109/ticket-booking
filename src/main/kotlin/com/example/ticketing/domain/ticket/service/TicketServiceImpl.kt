@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional
 class TicketServiceImpl(
     private val ticketRepository: TicketRepository
 ) : TicketService {
+
     override fun createTicket(req: TicketRequest): TicketResponse {
         val ticket = ticketRepository.save(
             Ticket(
