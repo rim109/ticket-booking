@@ -9,7 +9,7 @@ import org.hibernate.annotations.SQLDelete
 @Table(name = "category")
 class Category(
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 10)
     val name: String
 
 ) : BaseTimeEntity() {

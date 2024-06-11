@@ -9,25 +9,25 @@ import org.hibernate.annotations.SQLDelete
 @Table(name = "inform")
 class Inform(
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 10)
     var title: String,
 
     @Column(name = "content")
     var content: String,
 
-    @Column(name = "image_Url")
+    @Column(name = "image_Url", nullable = false)
     var imageUrl: String,
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     var price: String,
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false, columnDefinition = "TEXT")
     var address: String,
 
-    @Column(name = "period")
+    @Column(name = "period", nullable = false)
     var period: String,
 
-    @Column(name = "totalTime")
+    @Column(name = "totalTime", nullable = false)
     var totalTime: String,
 
 //    @ManyToOne(fetch = FetchType.LAZY)
