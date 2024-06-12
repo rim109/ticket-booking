@@ -14,7 +14,11 @@ class SocialMember(
     @Enumerated(EnumType.STRING)
     val provider: OAuth2Provider,
     val providerId: String,
-    val nickname: String
+    val nickname: String,
+
+    @Enumerated(EnumType.STRING)
+    val role: UserRole = UserRole.USER
+
 
 ) : BaseTimeEntity() {
     companion object {

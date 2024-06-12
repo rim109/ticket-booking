@@ -26,6 +26,10 @@ class User(
 
     @Column(name = "phoneNumber", length = 13)
     var phoneNumber: String,
+
+    @Enumerated(EnumType.STRING)
+    val role: UserRole = UserRole.USER
+
 ) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
