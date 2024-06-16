@@ -15,6 +15,7 @@ class SocialMember(
     val provider: OAuth2Provider,
     val providerId: String,
     val nickname: String,
+    val email: String,
 
     @Enumerated(EnumType.STRING)
     val role: UserRole = UserRole.USER
@@ -22,19 +23,21 @@ class SocialMember(
 
 ) : BaseTimeEntity() {
     companion object {
-        fun ofKakao(id: Long, nickname: String): SocialMember {
+        fun ofKakao(id: Long, nickname: String, email: String): SocialMember {
             return SocialMember(
                 provider = OAuth2Provider.KAKAO,
                 providerId = id.toString(),
-                nickname = nickname
+                nickname = nickname,
+                email = email
             )
         }
 
-        fun ofGoogle(id: Long, nickname: String): SocialMember {
+        fun ofGoogle(id: Long, nickname: String, email: String): SocialMember {
             return SocialMember(
                 provider = OAuth2Provider.GOOGLE,
                 providerId = id.toString(),
-                nickname = nickname
+                nickname = nickname,
+                email = email
             )
         }
     }
