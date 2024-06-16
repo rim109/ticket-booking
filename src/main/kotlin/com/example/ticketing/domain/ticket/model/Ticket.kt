@@ -1,15 +1,11 @@
 package com.example.ticketing.domain.ticket.model
 
 import com.example.ticketing.common.model.BaseTimeEntity
-import com.example.ticketing.domain.category.model.Category
-import com.example.ticketing.domain.inform.model.Inform
 import jakarta.persistence.*
-import org.hibernate.annotations.OnDelete
-import org.hibernate.annotations.OnDeleteAction
 import org.hibernate.annotations.SQLDelete
 
 @Entity
-@SQLDelete(sql = "UPDATE ticket SET is_deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 @Table(name = "ticket")
 class Ticket(
     @Column(name = "date")
@@ -21,9 +17,6 @@ class Ticket(
     @Column(name = "seats")
     var seats: Int,
 
-    @Column(name = "is_deleted")
-    var isDeleted: Boolean = false,
-
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "inform_id")
 //    var inform: Inform,
@@ -34,7 +27,7 @@ class Ticket(
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    var user: Category,
 
-    ): BaseTimeEntity() {
+) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val userService: UserService
 ) {
-
     @GetMapping("/{userId}")
     fun getUser(
         @PathVariable userId: Long

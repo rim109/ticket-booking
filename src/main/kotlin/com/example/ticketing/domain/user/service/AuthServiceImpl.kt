@@ -6,8 +6,8 @@ import com.example.ticketing.domain.user.dto.request.SignupRequest
 import com.example.ticketing.domain.user.dto.response.LoginResponse
 import com.example.ticketing.domain.user.dto.response.UserResponse
 import com.example.ticketing.domain.user.model.User
+import com.example.ticketing.domain.user.model.UserRole
 import com.example.ticketing.domain.user.repository.UserRepository
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
@@ -20,7 +20,8 @@ class AuthServiceImpl(
         return LoginResponse(
             token = jwtPlugin.generateAccessToken(
                 subject = user.id.toString(),
-                email = user.email
+                email = user.email,
+                role = UserRole.USER.toString()
             )
         )
     }

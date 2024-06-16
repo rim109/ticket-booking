@@ -9,23 +9,27 @@ import org.hibernate.annotations.SQLDelete
 @Table(name = "users")
 class User(
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 8)
     var name: String,
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, length = 30)
     var email: String,
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     var password: String,
 
-    @Column(name = "nickname")
+    @Column(name = "nickname", length = 20)
     var nickname: String,
 
-    @Column(name = "address")
+    @Column(name = "address", columnDefinition = "TEXT")
     var address: String,
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phoneNumber", length = 13)
     var phoneNumber: String,
+
+    @Enumerated(EnumType.STRING)
+    val role: UserRole = UserRole.USER
+
 ) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

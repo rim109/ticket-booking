@@ -1,36 +1,33 @@
 package com.example.ticketing.domain.inform.model
 
 import com.example.ticketing.common.model.BaseTimeEntity
-import com.example.ticketing.domain.category.model.Category
 import jakarta.persistence.*
-import org.hibernate.annotations.OnDelete
-import org.hibernate.annotations.OnDeleteAction
 import org.hibernate.annotations.SQLDelete
 
 @Entity
-@SQLDelete(sql = "UPDATE inform SET is_deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 @Table(name = "inform")
 class Inform(
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 10)
     var title: String,
 
     @Column(name = "content")
     var content: String,
 
-    @Column(name = "image_Url")
+    @Column(name = "image_Url", nullable = false)
     var imageUrl: String,
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     var price: String,
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false, columnDefinition = "TEXT")
     var address: String,
 
-    @Column(name = "period")
+    @Column(name = "period", nullable = false)
     var period: String,
 
-    @Column(name = "totalTime")
+    @Column(name = "totalTime", nullable = false)
     var totalTime: String,
 
 //    @ManyToOne(fetch = FetchType.LAZY)
@@ -44,7 +41,7 @@ class Inform(
 //    var user: Category,
 
 
-    ) : BaseTimeEntity() {
+) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null

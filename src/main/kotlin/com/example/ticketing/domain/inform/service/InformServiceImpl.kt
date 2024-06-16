@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional
 class InformServiceImpl(
     private val informRepository: InformRepository
 ) : InformService {
+
     override fun getInform(informId: Long): GetInformDto {
         val inform = informRepository.findByIdOrNull(informId) ?: TODO()
         return GetInformDto.from(inform)

@@ -7,7 +7,6 @@ import com.example.ticketing.domain.user.dto.request.SignupRequest
 import com.example.ticketing.domain.user.dto.response.LoginResponse
 import com.example.ticketing.domain.user.dto.response.UserResponse
 import com.example.ticketing.domain.user.service.AuthService
-import com.example.ticketing.domain.user.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*
 class AuthController(
     private val authService: AuthService
 ) {
-
     @PostMapping("/login")
     fun login(
         @RequestBody req: LoginRequest
