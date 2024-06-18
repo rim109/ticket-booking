@@ -48,6 +48,6 @@ class OAuth2LoginController(
             .also { it.add(HttpHeaders.SET_COOKIE, cookie.toString()) }
 
 
-        return ResponseEntity(HttpStatus.PERMANENT_REDIRECT)
+        return ResponseEntity(headers, HttpStatus.PERMANENT_REDIRECT)
     }
 }
