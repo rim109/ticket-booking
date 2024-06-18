@@ -1,18 +1,19 @@
 package com.example.ticketing.common.oauth.client.kakao.dto
 
 import com.example.ticketing.common.oauth.provider.OAuth2Provider
+import com.example.ticketing.domain.user.dto.request.OAuth2UserInfo
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
-data class KakaoUserInfoResponse(
-    val id: Long,
-    val properties: KakaoUserPropertiesResponse
-){
-    val nickname: String
-        get() = properties.nickname
-    val email: String
-        get() = properties.email
-    val provider: OAuth2Provider
-        get() = OAuth2Provider.KAKAO
-}
+class KakaoUserInfoResponse(
+    id: Long,
+    properties: OAuth2UserInfo
+
+) : OAuth2UserInfo(
+    provider = OAuth2Provider.KAKAO,
+    id = id.toString(),
+    nickname = properties.nickname,
+    email = properties.email,
+    profileImage = String() // 수정 예정
+)
