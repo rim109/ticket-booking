@@ -19,7 +19,7 @@ class KakaoOAuth2Client(
     @Value("\${oauth2.kakao.auth_server_base_url}") val authServerBaseUrl: String,
     @Value("\${oauth2.kakao.resource_server_base_url}") val resourceServerBaseUrl: String,
 
-    ): OAuth2Client {
+    ) : OAuth2Client {
     override fun generateLoginPageUrl(): String {
         return StringBuilder(authServerBaseUrl)
             .append("/oauth/authorize")
@@ -38,7 +38,7 @@ class KakaoOAuth2Client(
         return restClient.post()
             .uri("$authServerBaseUrl/oauth/token")
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(LinkedMultiValueMap<String, String>().apply { this.setAll(requestData)})
+            .body(LinkedMultiValueMap<String, String>().apply { this.setAll(requestData) })
             .retrieve()
             .body<KakaoTokenResponse>()
             ?.accessToken
@@ -48,7 +48,7 @@ class KakaoOAuth2Client(
     override fun retrieveUserInfo(accessToken: String): KakaoUserInfoResponse {
         return restClient.get()
             .uri("$resourceServerBaseUrl/user/me")
-            .header("Authorziation","Bearer $accessToken")
+            .header("Authorziation", "Bearer $accessToken")
             .retrieve()
             .body<KakaoUserInfoResponse>()
             ?: throw RuntimeException("UserInfo 조회 실패")

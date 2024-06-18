@@ -37,7 +37,7 @@ class GoogleOAuth2Client(
         return restClient.post()
             .uri("$authServerBaseUrl/oauth/token")
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(LinkedMultiValueMap<String, String>().apply { this.setAll(requestData)})
+            .body(LinkedMultiValueMap<String, String>().apply { this.setAll(requestData) })
             .retrieve()
             .body<GoogleTokenResponse>()
             ?.accessToken
@@ -47,7 +47,7 @@ class GoogleOAuth2Client(
     override fun retrieveUserInfo(accessToken: String): GoogleUserInfoResponse {
         return restClient.get()
             .uri("$resourceServerBaseUrl/user/me")
-            .header("Authorziation","Bearer $accessToken")
+            .header("Authorziation", "Bearer $accessToken")
             .retrieve()
             .body<GoogleUserInfoResponse>()
             ?: throw RuntimeException("UserInfo 조회 실패")

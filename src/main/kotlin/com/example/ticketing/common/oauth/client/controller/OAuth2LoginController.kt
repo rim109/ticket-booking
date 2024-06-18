@@ -25,8 +25,8 @@ class OAuth2LoginController(
         @PathVariable provider: OAuth2Provider,
         res: HttpServletResponse
     ) {
-        val LoginUrl = oAuth2Client.generateLoginPageUrl(provider)
-        res.sendRedirect(LoginUrl)
+        val loginUrl = oAuth2Client.generateLoginPageUrl(provider)
+        res.sendRedirect(loginUrl)
     }
 
     @GetMapping("/callback/{provider}")
