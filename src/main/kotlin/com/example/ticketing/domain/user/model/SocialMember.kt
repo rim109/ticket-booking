@@ -32,10 +32,10 @@ class SocialMember(
             )
         }
 
-        fun ofGoogle(id: Long, nickname: String, email: String): SocialMember {
+        fun ofGoogle(id: String, nickname: String, email: String): SocialMember {
             return SocialMember(
                 provider = OAuth2Provider.GOOGLE,
-                providerId = id.toString(),
+                providerId = id,
                 nickname = nickname,
                 email = email
             )
