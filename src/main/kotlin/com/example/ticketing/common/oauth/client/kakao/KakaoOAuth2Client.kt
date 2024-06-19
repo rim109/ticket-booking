@@ -24,7 +24,7 @@ class KakaoOAuth2Client(
         return StringBuilder(authServerBaseUrl)
             .append("/oauth/authorize")
             .append("?client_id=").append(clientId)
-            .append("&redirect-uri=").append(redirectUrl)
+            .append("&redirect_uri=").append(redirectUrl)
             .append("&response_type=").append("code")
             .toString()
     }
