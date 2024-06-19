@@ -33,7 +33,8 @@ class KakaoOAuth2Client(
         val requestData = mutableMapOf(
             "grant_type" to "authorization_code",
             "client_id" to clientId,
-            "code" to authorizationCode
+            "code" to authorizationCode,
+            "redirect_uri" to redirectUrl
         )
         return restClient.post()
             .uri("$authServerBaseUrl/oauth/token")
