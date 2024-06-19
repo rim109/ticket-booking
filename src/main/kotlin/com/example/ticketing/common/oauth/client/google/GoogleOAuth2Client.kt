@@ -36,7 +36,8 @@ class GoogleOAuth2Client(
             "grant_type" to "authorization_code",
             "client_id" to clientId,
             "client_secret" to clientSecret,
-            "code" to authorizationCode
+            "code" to authorizationCode,
+            "redirect_uri" to redirectUrl
         )
         return restClient.post()
             .uri("$tokenBaseUrl/token")
