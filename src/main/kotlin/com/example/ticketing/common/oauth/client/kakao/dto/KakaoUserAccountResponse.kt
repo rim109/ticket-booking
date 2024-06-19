@@ -4,6 +4,6 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
-data class KakaoUserPropertiesResponse(
-    val nickname: String
+data class KakaoUserAccountResponse(
+    val email: String
 )

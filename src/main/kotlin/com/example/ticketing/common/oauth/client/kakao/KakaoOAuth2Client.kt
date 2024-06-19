@@ -47,7 +47,7 @@ class KakaoOAuth2Client(
 
     override fun retrieveUserInfo(accessToken: String): KakaoUserInfoResponse {
         return restClient.get()
-            .uri("$resourceServerBaseUrl/user/me")
+            .uri("$resourceServerBaseUrl/v2/user/me")
             .header("Authorization", "Bearer $accessToken")
             .retrieve()
             .body<KakaoUserInfoResponse>()

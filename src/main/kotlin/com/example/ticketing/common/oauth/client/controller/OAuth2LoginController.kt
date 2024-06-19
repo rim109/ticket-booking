@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseCookie
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import java.net.URI
 
@@ -21,6 +22,7 @@ class OAuth2LoginController(
 
 
     @GetMapping("/login/{provider}")
+    @PreAuthorize("isAnonymous()")
     fun oAuth2Login(
         @PathVariable provider: OAuth2Provider,
         res: HttpServletResponse
@@ -30,6 +32,7 @@ class OAuth2LoginController(
     }
 
     @GetMapping("/callback/{provider}")
+    @PreAuthorize("isAnonymous()")
     fun callback(
         @PathVariable provider: OAuth2Provider, res: HttpServletResponse,
         @RequestParam(name = "code") authorizationCode: String
