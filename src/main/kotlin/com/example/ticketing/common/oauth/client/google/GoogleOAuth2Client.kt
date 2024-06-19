@@ -16,15 +16,18 @@ class GoogleOAuth2Client(
     private val restClient: RestClient,
     @Value("\${oauth2.google.client_id}") val clientId: String,
     @Value("\${oauth2.google.redirect_url}") val redirectUrl: String,
+    @Value("\${oauth2.google.client_secret}") val clientSecret: String,
+    @Value("\${oauth2.google.token_base_url}") val tokenBaseUrl: String,
     @Value("\${oauth2.google.auth_server_base_url}") val authServerBaseUrl: String,
-    @Value("\${oauth2.google.resource_server_base_url}") val resourceServerBaseUrl: String,
+    @Value("\${oauth2.google.resource_server_base_url}") val resourceServerBaseUrl: String
 ) : OAuth2Client {
     override fun generateLoginPageUrl(): String {
         return StringBuilder(authServerBaseUrl)
-            .append("/oauth/authorize")
-            .append("?client_id=").append(clientId)
-            .append("&redirect-uri=").append(redirectUrl)
-            .append("&response_type=").append("code")
+            .append("?response_type=").append("code")
+            .append("&client_id=").append(clientId)
+            .append("&redirect_uri=").append(redirectUrl)
+            .append("&scope=")
+            .append("https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email")
             .toString()
     }
 
@@ -32,12 +35,14 @@ class GoogleOAuth2Client(
         val requestData = mutableMapOf(
             "grant_type" to "authorization_code",
             "client_id" to clientId,
-            "code" to authorizationCode
+            "client_secret" to clientSecret,
+            "code" to authorizationCode,
+            "redirect_uri" to redirectUrl
         )
         return restClient.post()
-            .uri("$authServerBaseUrl/oauth/token")
+            .uri("$tokenBaseUrl/token")
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(LinkedMultiValueMap<String, String>().apply { this.setAll(requestData)})
+            .body(LinkedMultiValueMap<String, String>().apply { this.setAll(requestData) })
             .retrieve()
             .body<GoogleTokenResponse>()
             ?.accessToken
@@ -46,8 +51,8 @@ class GoogleOAuth2Client(
 
     override fun retrieveUserInfo(accessToken: String): GoogleUserInfoResponse {
         return restClient.get()
-            .uri("$resourceServerBaseUrl/user/me")
-            .header("Authorziation","Bearer $accessToken")
+            .uri("$resourceServerBaseUrl/userinfo")
+            .header("Authorization", "Bearer $accessToken")
             .retrieve()
             .body<GoogleUserInfoResponse>()
             ?: throw RuntimeException("UserInfo 조회 실패")

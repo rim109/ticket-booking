@@ -1,10 +1,9 @@
-package com.example.ticketing.common.oauth.client.google.dto
+package com.example.ticketing.common.oauth.client.kakao.dto
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
-data class GoogleUserPropertiesResponse(
-    val email: String,
-    val nickname: String
+data class KakaoUserAccountResponse(
+    val email: String
 )
