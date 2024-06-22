@@ -1,4 +1,4 @@
-package com.example.ticketing.common.oauth.client.controller
+package com.example.ticketing.domain.user.controller
 
 import com.example.ticketing.common.oauth.client.OAuth2ClientService
 import com.example.ticketing.common.oauth.provider.OAuth2Provider
