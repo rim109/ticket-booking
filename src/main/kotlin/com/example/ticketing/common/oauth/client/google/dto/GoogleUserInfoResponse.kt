@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming
 class GoogleUserInfoResponse(
     id: String,
     name: String,
+    picture: String,
 
     @JsonProperty
     email: String
@@ -18,6 +19,7 @@ class GoogleUserInfoResponse(
     provider = OAuth2Provider.GOOGLE,
     id = id,
     nickname = name,
-    email = email
+    email = email,
+    profileImage = picture
 )
 

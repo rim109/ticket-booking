@@ -6,5 +6,6 @@ open class OAuth2UserInfo (
     val provider: OAuth2Provider,
     val id: String,
     val nickname: String,
-    val email: String
+    val email: String,
+    val profileImage: String
 )

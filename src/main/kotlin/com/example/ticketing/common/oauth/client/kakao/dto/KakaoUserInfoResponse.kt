@@ -15,5 +15,6 @@ class KakaoUserInfoResponse(
     provider = OAuth2Provider.KAKAO,
     id = id.toString(),
     nickname = properties.nickname,
-    email = kakaoAccount.email
+    email = kakaoAccount.email,
+    profileImage = properties.profileImage
 )
