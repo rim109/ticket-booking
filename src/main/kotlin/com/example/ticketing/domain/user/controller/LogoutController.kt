@@ -21,7 +21,12 @@ class LogoutController {
             .build()
 
         val headers = HttpHeaders()
-            .also { it.add(HttpHeaders.SET_COOKIE, cookie.toString()) } // 헤더에 SET COOKIE 헤더 추가, 내용은 위에서 만들어놓은 accessTokenInCookie 객체
+            .also {
+                it.add(
+                    HttpHeaders.SET_COOKIE,
+                    cookie.toString()
+                )
+            } // 헤더에 SET COOKIE 헤더 추가, 내용은 위에서 만들어놓은 accessTokenInCookie 객체
 
         return ResponseEntity(headers, HttpStatus.OK)
     }
