@@ -15,8 +15,8 @@ class SocialUserService(
     fun registerIfAbsent(oAuth2UserInfo: OAuth2UserInfo): SocialMember {
         return if (!socialUserRepository.existsByProviderAndProviderId(oAuth2UserInfo.provider, oAuth2UserInfo.id)) {
             val socialUser = when(oAuth2UserInfo.provider){
-                OAuth2Provider.KAKAO -> SocialMember.ofKakao(oAuth2UserInfo.id.toLong(), oAuth2UserInfo.nickname, oAuth2UserInfo.email)
-                OAuth2Provider.GOOGLE -> SocialMember.ofGoogle(oAuth2UserInfo.id, oAuth2UserInfo.nickname, oAuth2UserInfo.email)
+                OAuth2Provider.KAKAO -> SocialMember.ofKakao(oAuth2UserInfo.id.toLong(), oAuth2UserInfo.nickname, oAuth2UserInfo.email, oAuth2UserInfo.profileImage)
+                OAuth2Provider.GOOGLE -> SocialMember.ofGoogle(oAuth2UserInfo.id, oAuth2UserInfo.nickname, oAuth2UserInfo.email,oAuth2UserInfo.profileImage)
             }
             socialUserRepository.save(socialUser)
         } else {
