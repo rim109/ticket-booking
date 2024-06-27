@@ -21,7 +21,7 @@ class OAuth2LoginService(
             // 사용자 정보로 social user 없으면 회원가입, 있으면 조회
             .let { socialUserService.registerIfAbsent(it) }
             // social user 정보로 우리 쪽 액세스 토큰 발급
-            .let { jwtPlugin.generateAccessToken(it.id!!.toString(), it.email, it.role.toString()) }
+            .let { jwtPlugin.generateAccessToken(it.id!!.toString(), it.role.toString()) }
     }
 
 }

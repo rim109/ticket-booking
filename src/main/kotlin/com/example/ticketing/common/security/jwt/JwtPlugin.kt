@@ -15,7 +15,7 @@ import java.util.*
 class JwtPlugin(
     @Value("\${auth.jwt.issuer}") private val issuer: String,
     @Value("\${auth.jwt.secret}") private val secret: String,
-    @Value("\${auth.jwt.accessTokenExpirationHour}") private val accessTokenExpirationHour: Long,
+    @Value("\${auth.jwt.accessTokenExpirationDays}") private val accessTokenExpirationDays: Long,
 ) {
 
     fun validateToken(jwt: String): Result<Jws<Claims>> {
@@ -26,13 +26,13 @@ class JwtPlugin(
         }
     }
 
-    fun generateAccessToken(subject: String, email: String, role: String): String {
-        return generateToken(subject, email, role, Duration.ofHours(accessTokenExpirationHour))
+    fun generateAccessToken(subject: String, role: String): String {
+        return generateToken(subject, role, Duration.ofDays(accessTokenExpirationDays))
     }
 
-    private fun generateToken(subject: String, email: String, role: String , expirationPeriod: Duration): String {
+    private fun generateToken(subject: String, role: String , expirationPeriod: Duration): String {
         val claims: Claims = Jwts.claims()
-            .add(mapOf("email" to email, "role" to role))
+            .add(mapOf("role" to role))
             .build()
 
         val key = Keys.hmacShaKeyFor(secret.toByteArray(StandardCharsets.UTF_8))
