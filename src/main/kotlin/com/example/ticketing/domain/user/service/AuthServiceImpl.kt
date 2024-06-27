@@ -20,7 +20,6 @@ class AuthServiceImpl(
         return LoginResponse(
             token = jwtPlugin.generateAccessToken(
                 subject = user.id.toString(),
-                email = user.email,
                 role = UserRole.USER.toString()
             )
         )
