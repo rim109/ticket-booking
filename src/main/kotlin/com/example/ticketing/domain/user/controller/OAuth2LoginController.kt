@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 import java.net.URI
 
 @RestController
-@RequestMapping("/oauth")
+@RequestMapping("/auth")
 class OAuth2LoginController(
     private val oAuth2LoginService: OAuth2LoginService,
     private val oAuth2Client: OAuth2ClientService
